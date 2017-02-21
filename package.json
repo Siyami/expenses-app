@@ -26,7 +26,6 @@
     "knex": "knex",
     "heroku-postbuild": "knex migrate:latest",
     "nf": "nf start",
-    "nodemon": "nodemon server/app.js",
     "start": "react-scripts start & nodemon server/bin/www",
     "start-prod": "env PORT=3000 nodemon server/bin/www",
     "build": "react-scripts build",
