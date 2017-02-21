@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "foreman": "^2.0.0",
     "react-scripts": "0.9.0"
   },
   "dependencies": {
@@ -23,6 +24,9 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "knex": "knex",
+    "heroku-postbuild": "knex migrate:latest",
+    "nf": "nf start",
+    "nodemon": "nodemon server.js",
     "start": "react-scripts start & nodemon server/bin/www",
     "start-prod": "env PORT=3000 nodemon server/bin/www",
     "build": "react-scripts build",

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Table } from 'react-bootstrap';
+import { Grid, Table, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router';
 
@@ -21,6 +21,7 @@ class ListExpenses extends Component {
 
     return (
       <Grid>
+        <Col xs={8} xsOffset={2}>
 
         <h3>List of Expenses</h3>
         <Table striped bordered condensed hover>
@@ -49,6 +50,7 @@ class ListExpenses extends Component {
         <Link to="/add" >
           <button>Add New Expense</button>
         </Link>
+        </Col>
 
       </Grid>
     );
