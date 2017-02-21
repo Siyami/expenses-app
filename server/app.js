@@ -2,10 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 
-app.use('/api', require('./routes/api'))
+app.use('/api', require('./routes/expenses'))
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
