@@ -24,7 +24,6 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "knex": "knex",
-    "heroku-postbuild": "knex migrate:latest",
     "start": "react-scripts start & nodemon server/bin/www",
     "start-prod": "env PORT=3000 nodemon server/bin/www",
     "build": "react-scripts build",

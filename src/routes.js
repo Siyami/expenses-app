@@ -8,6 +8,8 @@ import ListExpenses from './components/ListExpenses.js'
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={ListExpenses} />
+
     <Route path="add" component={AddExpense} />
+
   </Route>
 );

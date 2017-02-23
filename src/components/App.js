@@ -10,11 +10,13 @@ class App extends Component {
       expenses: [],
       refresh: null
     }
+    this.setStateFromAddExpense = this.setStateFromAddExpense.bind(this);
 
   }
 
   componentDidMount() {
-    axios.get('/api/expenses') //it will prepend automatically
+    console.log('I JUST MOUNTED'); // componentDidMount only runs once you start the server, doesn't run again when you rerender
+    axios.get('/api/expenses')
       .then(({data}) => {
         console.log(data);
         this.setState({
@@ -26,7 +28,15 @@ class App extends Component {
       })
   }
 
+  setStateFromAddExpense(newAdd) {
+    console.log(this);
+    this.setState({
+      expenses: this.state.expenses.concat(newAdd)
+    })
+  }
+
   render() {
+    console.log(this.props.children);
     return (
       <div>
         {React.cloneElement(

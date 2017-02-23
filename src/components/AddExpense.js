@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
 import axios from 'axios';
-import knex from '../../knex.js';
 import { Link, browserHistory } from 'react-router';
 
 class AddExpense extends Component {
@@ -17,6 +16,8 @@ class AddExpense extends Component {
 
   }
 
+
+
   handleChange(event) {
     const nextState = {
       [event.target.name]: event.target.value
@@ -26,7 +27,7 @@ class AddExpense extends Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(this.state.category);
     console.log(this.state.amount);
 
@@ -34,18 +35,19 @@ class AddExpense extends Component {
       category: this.state.category,
       amount: this.state.amount
     })
-    .then((response) => {
-      console.log(response);
+    .then(({data}) => {
+      console.log(data);
+      this.props.setStateFromAddExpense(data);
     })
     .catch(function (error) {
       console.log(error);
     });
 
     // Reset the form
-    this.setState({
-      category: '',
-      amount: ''
-    });
+    // this.setState({
+    //   category: '',
+    //   amount: ''
+    // });
 
     // setTimeout(function() { browserHistory.push('/') }, 3000);
     browserHistory.push('/')
