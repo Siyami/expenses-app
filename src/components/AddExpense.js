@@ -16,8 +16,6 @@ class AddExpense extends Component {
 
   }
 
-
-
   handleChange(event) {
     const nextState = {
       [event.target.name]: event.target.value

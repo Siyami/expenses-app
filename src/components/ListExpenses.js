@@ -16,7 +16,6 @@ class ListExpenses extends Component {
       })
   }
 
-
   render() {
 
     return (
