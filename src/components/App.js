@@ -11,6 +11,7 @@ class App extends Component {
       refresh: null
     }
     this.setStateFromAddExpense = this.setStateFromAddExpense.bind(this);
+    this.deleteExpenseFromListExpense = this.deleteExpenseFromListExpense.bind(this);
 
   }
 
@@ -35,15 +36,33 @@ class App extends Component {
     })
   }
 
+  deleteExpenseFromListExpense(event, expense) {
+    console.log(expense.id);
+    axios.delete(`/api/expenses/${expense.id}`)
+      .then(({data}) => {
+        console.log(expense);
+        let index = this.state.expenses.indexOf(expense)
+        const array = this.state.expenses
+        array.splice(index, 1)
+        this.setState({
+          expenses: array
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   render() {
-    console.log(this.props.children);
+    // console.log(this.props.children);
     return (
       <div>
         {React.cloneElement(
           this.props.children,
           {
             expenses: this.state.expenses,
-            setStateFromAddExpense: this.setStateFromAddExpense
+            setStateFromAddExpense: this.setStateFromAddExpense,
+            deleteExpenseFromListExpense: this.deleteExpenseFromListExpense
           }
         ) }
       </div>

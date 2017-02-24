@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Table, Col } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router';
 
 class ListExpenses extends Component {
-
-  deleteExpense(event, expense) {
-
-    axios.delete(`/api/expenses/${expense.id}`) //it will prepend automatically
-      .then(({data}) => {
-
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
 
   render() {
 
@@ -39,7 +27,7 @@ class ListExpenses extends Component {
                   <td>{expense.id}</td>
                   <td>{expense.category}</td>
                   <td>{expense.amount}</td>
-                  <td><button onClick={(event) => this.deleteExpense(event, expense)}>Delete</button></td>
+                  <td><button onClick={(event) => this.props.deleteExpenseFromListExpense(event, expense)}>Delete</button></td>
                 </tr>
               )
             })}
